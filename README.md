@@ -170,17 +170,5 @@ medibook/
 └── docs/
 ```
 
----
 
-## Documentation
-
-Detailed architecture documentation is available in the [`docs/`](./docs) folder:
-- [Setup Guide](./docs/setup.md)
-- [Database Schema & Design](./docs/database-design.md)
-- [Authentication & JWT](./docs/authentication.md)
-- [Role-Based Authorization](./docs/authorization.md)
-- [Appointment Concurrency & Transactions](./docs/appointment-concurrency.md)
-- [AI Symptom Triage Architecture](./docs/ai-architecture.md)
-- [API Route Specifications](./docs/api-design.md)
-- [Functions & Workflows](./docs/functions-and-workflows.md)
 
