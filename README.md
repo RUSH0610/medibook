@@ -94,15 +94,17 @@ Create `frontend/.env`:
 VITE_BACKEND_URL=http://localhost:4000
 ```
 
-### 3. Database Migration & Seeding
+### 3. Database Schema Push & Seeding
 ```bash
 cd backend
 
-# Generate/apply Drizzle migrations
-npm run db:generate
-npm run db:migrate
+# Synchronize schema directly with PostgreSQL (no migrations)
+npm run db:push
 
-# Start backend (auto-runs baseline migration & seed data on start)
+# Run idempotent base database seeder
+npm run db:seed
+
+# Start backend development server
 npm run dev
 ```
 
@@ -122,17 +124,18 @@ npm run dev
 ```text
 medibook/
 ├── backend/
-│   ├── server.js                  # Entry point: DB check, seed, Cloudinary, listen
+│   ├── server.js                  # Entry point: DB check, Cloudinary, listen
 │   ├── drizzle.config.js
 │   ├── scripts/
+│   │   ├── seed.js                # Base database seeder (specializations & admin)
 │   │   ├── smoke_test.mjs         # End-to-end API smoke test (12 flows, run: node scripts/smoke_test.mjs)
-│   │   ├── demo_seed.mjs          # Seeds demo accounts (admin / patient / doctor)
-│   │   └── prod_cleanup.mjs       # Prunes stale data in production
+│   │   ├── seed_demo.js           # Seeds demo accounts (admin / patient / doctor)
+│   │   └── cleanup_demo_prod.js   # Prunes stale data in production
 │   └── src/
 │       ├── app.js                 # Express app: CORS, parsers, /api/v1 router, global error handler
 │       ├── routes/index.js        # Mounts every module router under /api/v1
 │       ├── config/                # Cloudinary SDK setup
-│       ├── db/                    # Drizzle schema, migrations, pool, startup seed
+│       ├── db/                    # Drizzle schema & connection pool
 │       ├── middlewares/
 │       │   ├── auth.middleware.js       # requireAuth, requirePatient, requireDoctor, requireAdmin
 │       │   ├── upload.middleware.js     # Multer memory-storage for file uploads

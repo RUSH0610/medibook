@@ -6,14 +6,9 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "build": "npm run db:migrate",
-    "prestart": "npm run db:migrate",
-    "db:generate": "drizzle-kit generate",
-    "db:migrate": "node src/db/migrate.js",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
-    "db:check": "drizzle-kit check",
-    "db:seed": "node src/db/seed.js",
+    "db:seed": "node scripts/seed.js",
     "db:check:integrity": "node scripts/check_integrity.js",
     "db:seed:demo": "node scripts/seed_demo.js",
     "db:cleanup:prod": "node scripts/cleanup_demo_prod.js"

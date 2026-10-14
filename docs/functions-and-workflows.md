@@ -25,13 +25,13 @@ This document provides a comprehensive technical reference for all backend funct
 ## 1. System Overview & Entry Point
 
 ### File: `server.js`
-The server initialization module manages startup lifecycle operations in 4 distinct steps:
+The server initialization module manages startup lifecycle operations in 3 distinct steps:
 
 1. **`testConnection()`**: Executes `SELECT NOW(), current_database()` to verify PostgreSQL availability.
-2. **Migrations**: `npm start` runs `npm run db:migrate` first (Drizzle migrations in `src/db/migrations`).
-3. **`seedDatabase()`**: Populates initial specializations, default admin, sample doctors, and patient accounts if missing.
-4. **`connectCloudinary()`**: Configures Cloudinary API credentials for file/image streaming.
-5. **`app.listen(PORT)`**: Launches Express HTTP server listening on the configured `PORT` (default 4000).
+2. **`connectCloudinary()`**: Configures Cloudinary API credentials for file/image streaming.
+3. **`app.listen(PORT)`**: Launches Express HTTP server listening on the configured `PORT` (default 4000).
+
+Database schema is synchronized directly via `npm run db:push` (Drizzle push), and base records can be initialized via `npm run db:seed` (`scripts/seed.js`).
 
 ---
 

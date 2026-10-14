@@ -52,10 +52,10 @@ VITE_BACKEND_URL=http://localhost:4000
 ## 3. Database Initialization & Seeding
 
 1. Ensure PostgreSQL is running on the configured port (`5433` or standard `5432`).
-2. Run database migration and initial seed data:
+2. Synchronize database schema and run initial seed data:
 ```bash
 cd backend
-npm run db:migrate && npm run db:seed
+npm run db:push && npm run db:seed
 ```
 *(Demo data for local development: `npm run db:seed:demo`.)*
 
